@@ -2,5 +2,8 @@
   "framework": null,
   "installCommand": "true",
   "buildCommand": "true",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/", "destination": "/HORUS.html" }
+  ]
 }
