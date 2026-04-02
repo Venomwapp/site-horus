@@ -1,8 +1,18 @@
 {
-  "buildCommand": "",
-  "outputDirectory": ".",
-  "framework": null,
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/HORUS.html" }
+  "version": 2,
+  "builds": [
+    {
+      "src": "**/*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/HORUS.html" },
+    { "src": "/formulario", "dest": "/formulario.html" },
+    { "src": "/politica-privacidade", "dest": "/politica-privacidade.html" }
   ]
 }
