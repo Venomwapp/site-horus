@@ -509,7 +509,7 @@
                         <div class="absolute inset-0 flex items-end justify-center gap-8 px-8 translate-y-16 transition-transform duration-700 group-hover:translate-y-8">
                             
                             <!-- Phone Mockup -->
-                            <div class="relative w-[220px] bg-zinc-900 rounded-[2.5rem] p-3 shadow-2xl border border-zinc-800 z-20 transform -rotate-6 translate-y-8 group-hover:-rotate-12 transition-transform duration-700">
+                            <div class="relative w-[220px] bg-zinc-900 rounded-[2.5rem] p-3 shadow-2xl border border-zinc-800 z-20 transform md:-rotate-6 translate-y-8 md:group-hover:-rotate-12 transition-transform duration-700">
                                 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-zinc-900 rounded-b-xl z-30"></div>
                                 <div class="w-full h-full bg-white rounded-[2rem] overflow-hidden flex flex-col relative">
                                     <div class="p-6 pt-16 flex flex-col h-full items-center">
@@ -526,14 +526,14 @@
                             </div>
 
                             <!-- Browser Mockup -->
-                            <div class="relative flex-1 max-w-md bg-white rounded-t-2xl shadow-2xl border border-zinc-200 overflow-hidden z-10 transform translate-x-4 group-hover:translate-x-0 transition-transform duration-700">
+                            <div class="hidden md:block relative flex-1 max-w-md bg-white rounded-t-2xl shadow-2xl border border-zinc-200 overflow-hidden z-10 transform translate-x-4 group-hover:translate-x-0 transition-transform duration-700">
                                 <div class="h-10 bg-zinc-50 border-b border-zinc-100 flex items-center gap-2 px-4">
                                     <div class="flex gap-1.5">
                                         <div class="w-2.5 h-2.5 rounded-full bg-zinc-300"></div>
                                         <div class="w-2.5 h-2.5 rounded-full bg-zinc-300"></div>
                                         <div class="w-2.5 h-2.5 rounded-full bg-zinc-300"></div>
                                     </div>
-                                    <div class="mx-auto h-6 w-48 bg-white border border-zinc-200 rounded-md text-[10px] text-zinc-400 flex items-center justify-center font-medium">app.horus.com.br</div>
+                                    <div class="mx-auto h-6 w-48 bg-white border border-zinc-200 rounded-md text-[10px] text-zinc-400 flex items-center justify-center font-medium">app.horuscnt.com.br</div>
                                 </div>
                                 <div class="p-8 space-y-6">
                                     <div class="flex gap-4 items-center">
@@ -844,7 +844,7 @@
                     <ul class="space-y-3 text-sm text-zinc-500 font-light">
                         <li><a href="https://vip.acessorias.com/horusgfc" class="hover:text-[#b89818] transition-colors">Área VIP</a></li>
                         <li><a href="https://onvio.com.br/clientcenter/pt/auth?r=%2Fhome" class="hover:text-[#b89818] transition-colors">Portal do cliente</a></li>
-                        <li><a href="formulario.html" class="hover:text-[#b89818] transition-colors">Contato / Formulário</a></li>
+                        <li><a href="#contato" class="hover:text-[#b89818] transition-colors">Contato</a></li>
                     </ul>
                 </div>
 
@@ -860,11 +860,8 @@
 
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-zinc-100">
                 <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-xs text-zinc-400 font-light">
-                    <span>© 2026 Hórus Gestão Financeira e Contábil. CRC/MG nº [INSERIR NÚMERO DO REGISTRO]</span>
-                    <div class="flex gap-4">
-                        <a href="formulario.html" class="hover:text-[#b89818] transition-colors">Formulário</a>
-                        <a href="politica-privacidade.html" class="hover:text-[#b89818] transition-colors">Política de Privacidade</a>
-                    </div>
+                    <span>© 2026 Hórus Gestão Financeira e Contábil. CRC/MG nº 17075</span>
+                    <a href="politica-privacidade.html" class="hover:text-[#b89818] transition-colors">Política de Privacidade</a>
                 </div>
             </div>
         </div>
@@ -1047,7 +1044,7 @@
                 form.classList.add('hidden');
                 document.getElementById('modal-success').classList.remove('hidden');
             } catch (err) {
-                errEl.textContent = 'Não foi possível enviar. Tente novamente ou acesse nossa página de formulário.';
+                errEl.textContent = 'Não foi possível enviar. Tente novamente.';
                 errEl.classList.remove('hidden');
             } finally {
                 btn.disabled = false;
