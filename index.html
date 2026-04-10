@@ -868,199 +868,37 @@
         </div>
     </footer>
 
-    <!-- ===== MODAL FORMULÁRIO ===== -->
-    <div id="modal-overlay" class="fixed inset-0 z-[999] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-        <!-- Backdrop -->
-        <div id="modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
-
-        <!-- Modal Card -->
-        <div id="modal-card" class="relative z-10 w-full max-w-lg bg-white rounded-3xl shadow-2xl p-8 transform scale-95 opacity-0 transition-all duration-300">
-
-            <!-- Close -->
-            <button onclick="closeModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 flex items-center justify-center transition-colors">
-                <iconify-icon icon="solar:close-linear" class="text-zinc-500 text-base"></iconify-icon>
-            </button>
-
-            <!-- Header -->
-            <div class="mb-8">
-                <div class="w-10 h-10 rounded-2xl bg-[#b89818]/10 flex items-center justify-center mb-4">
-                    <iconify-icon icon="solar:buildings-2-linear" class="text-[#b89818] text-xl"></iconify-icon>
-                </div>
-                <h2 id="modal-title" class="text-2xl font-light tracking-tighter text-zinc-900 mb-1">Vamos começar</h2>
-                <p id="modal-subtitle" class="text-sm text-zinc-400 font-light">Preencha abaixo e nossa equipe entra em contato em minutos.</p>
-            </div>
-
-            <!-- Selector tabs -->
-            <div class="flex gap-2 mb-8 p-1 bg-zinc-100 rounded-2xl">
-                <button id="tab-abrir" onclick="setIntent('abrir')" class="flex-1 py-2 px-3 rounded-xl text-xs font-medium transition-all duration-200 bg-white text-zinc-900 shadow-sm">
-                    Abrir empresa
-                </button>
-                <button id="tab-conhecer" onclick="setIntent('conhecer')" class="flex-1 py-2 px-3 rounded-xl text-xs font-medium transition-all duration-200 text-zinc-500">
-                    Trocar de contabilidade
-                </button>
-            </div>
-
-            <!-- Form -->
-            <form id="modal-form" onsubmit="handleSubmit(event)" class="space-y-4">
-                <input type="hidden" id="form-intent" name="intent" value="abrir">
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="col-span-2">
-                        <label class="block text-xs font-medium text-zinc-500 mb-1.5">Nome completo</label>
-                        <input type="text" name="nome" required placeholder="Seu nome" class="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm font-light text-zinc-900 placeholder:text-zinc-300 focus:outline-none focus:border-[#b89818] focus:ring-1 focus:ring-[#b89818]/30 transition-colors bg-zinc-50">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-zinc-500 mb-1.5">WhatsApp</label>
-                        <input type="tel" name="whatsapp" required placeholder="(00) 00000-0000" class="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm font-light text-zinc-900 placeholder:text-zinc-300 focus:outline-none focus:border-[#b89818] focus:ring-1 focus:ring-[#b89818]/30 transition-colors bg-zinc-50">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-zinc-500 mb-1.5">E-mail</label>
-                        <input type="email" name="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm font-light text-zinc-900 placeholder:text-zinc-300 focus:outline-none focus:border-[#b89818] focus:ring-1 focus:ring-[#b89818]/30 transition-colors bg-zinc-50">
-                    </div>
-                    <div class="col-span-2">
-                        <label class="block text-xs font-medium text-zinc-500 mb-1.5">Qual é a sua profissão / segmento?</label>
-                        <input type="text" name="segmento" placeholder="Ex: Médico, Advogado, Desenvolvedor..." class="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm font-light text-zinc-900 placeholder:text-zinc-300 focus:outline-none focus:border-[#b89818] focus:ring-1 focus:ring-[#b89818]/30 transition-colors bg-zinc-50">
-                    </div>
-                    <div class="col-span-2" id="campo-faturamento">
-                        <label class="block text-xs font-medium text-zinc-500 mb-1.5">Faturamento mensal aproximado</label>
-                        <select name="faturamento" class="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm font-light text-zinc-900 focus:outline-none focus:border-[#b89818] focus:ring-1 focus:ring-[#b89818]/30 transition-colors bg-zinc-50 appearance-none">
-                            <option value="" disabled selected>Selecione uma faixa</option>
-                            <option>Até R$ 5.000/mês</option>
-                            <option>R$ 5.000 – R$ 15.000/mês</option>
-                            <option>R$ 15.000 – R$ 30.000/mês</option>
-                            <option>R$ 30.000 – R$ 60.000/mês</option>
-                            <option>Acima de R$ 60.000/mês</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Submit -->
-                <button type="submit" id="modal-submit-btn" class="w-full mt-2 bg-zinc-900 hover:bg-[#b89818] text-white py-3.5 rounded-xl text-sm font-medium transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
-                    <span id="btn-submit-text">Quero abrir minha empresa</span>
-                    <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
-                </button>
-                <p id="modal-form-error" class="hidden text-center text-sm text-red-500 mt-2"></p>
-                <p class="text-center text-xs text-zinc-400 font-light">Atendimento humano. Sem robô. Sem fila. Ao enviar, você aceita nossa <a href="politica-privacidade.html" target="_blank" class="text-[#b89818] hover:underline">Política de Privacidade</a>.</p>
-            </form>
-
-            <!-- Success State (hidden) -->
-            <div id="modal-success" class="hidden text-center py-8">
-                <div class="w-14 h-14 rounded-full bg-[#b89818]/10 flex items-center justify-center mx-auto mb-4">
-                    <iconify-icon icon="solar:check-circle-linear" class="text-[#b89818] text-3xl"></iconify-icon>
-                </div>
-                <h3 class="text-xl font-light tracking-tighter text-zinc-900 mb-2">Recebemos seu contato!</h3>
-                <p class="text-sm text-zinc-400 font-light mb-6">Nossa equipe vai entrar em contato pelo WhatsApp em instantes.</p>
-                <button onclick="closeModal()" class="bg-zinc-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[#b89818] transition-colors">Fechar</button>
-            </div>
-        </div>
-    </div>
-    <!-- ===== FIM MODAL ===== -->
-
     <!-- Interactive Scripts -->
     <script>
-        // ===== MODAL =====
+        // ===== REDIRECT PARA FORMULÁRIO EXTERNO =====
         function openModal(intent) {
             intent = intent || 'abrir';
-            setIntent(intent);
-            const overlay = document.getElementById('modal-overlay');
-            const card    = document.getElementById('modal-card');
-            document.getElementById('modal-form').classList.remove('hidden');
-            document.getElementById('modal-success').classList.add('hidden');
-            overlay.classList.remove('opacity-0', 'pointer-events-none');
-            overlay.classList.add('opacity-100');
-            setTimeout(() => {
-                card.classList.remove('scale-95', 'opacity-0');
-                card.classList.add('scale-100', 'opacity-100');
-            }, 20);
-            document.body.style.overflow = 'hidden';
+            const target = new URL('https://app.horuscnt.com.br/formulario');
+
+            // Repassa UTMs (e parâmetros de rastreio) presentes na URL atual
+            const current = new URLSearchParams(window.location.search);
+            const passThrough = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];
+            passThrough.forEach(k => {
+                if (current.has(k)) target.searchParams.set(k, current.get(k));
+            });
+
+            // Defaults de UTM caso o visitante tenha chegado sem parâmetros
+            if (!target.searchParams.has('utm_source'))   target.searchParams.set('utm_source', 'horuscnt_site');
+            if (!target.searchParams.has('utm_medium'))   target.searchParams.set('utm_medium', 'site');
+            if (!target.searchParams.has('utm_campaign')) target.searchParams.set('utm_campaign', 'landing_page');
+
+            // Intenção do botão clicado (abrir empresa / conhecer)
+            target.searchParams.set('intent', intent);
+
+            window.location.href = target.toString();
         }
 
-        function closeModal() {
-            const overlay = document.getElementById('modal-overlay');
-            const card    = document.getElementById('modal-card');
-            card.classList.remove('scale-100', 'opacity-100');
-            card.classList.add('scale-95', 'opacity-0');
-            overlay.classList.remove('opacity-100');
-            overlay.classList.add('opacity-0');
-            setTimeout(() => overlay.classList.add('pointer-events-none'), 300);
-            document.body.style.overflow = '';
-        }
-
-        function setIntent(intent) {
-            document.getElementById('form-intent').value = intent;
-            const tabAbrir    = document.getElementById('tab-abrir');
-            const tabConhecer = document.getElementById('tab-conhecer');
-            if (intent === 'abrir') {
-                tabAbrir.classList.add('bg-white', 'text-zinc-900', 'shadow-sm');
-                tabAbrir.classList.remove('text-zinc-500');
-                tabConhecer.classList.remove('bg-white', 'text-zinc-900', 'shadow-sm');
-                tabConhecer.classList.add('text-zinc-500');
-                document.getElementById('btn-submit-text').textContent = 'Quero abrir minha empresa';
-            } else {
-                tabConhecer.classList.add('bg-white', 'text-zinc-900', 'shadow-sm');
-                tabConhecer.classList.remove('text-zinc-500');
-                tabAbrir.classList.remove('bg-white', 'text-zinc-900', 'shadow-sm');
-                tabAbrir.classList.add('text-zinc-500');
-                document.getElementById('btn-submit-text').textContent = 'Quero conhecer a Hórus';
-            }
-        }
-
-        const LEAD_API = 'https://xljjhcqhvhiyjjqlailu.supabase.co/functions/v1/register-inbound-lead';
-
-        function cleanPhone(val) {
-            return (val || '').replace(/\D/g, '');
-        }
-
-        function buildLeadPayload(form) {
-            const intent = form.querySelector('[name="intent"]').value;
-            return {
-                nome: form.querySelector('[name="nome"]').value.trim(),
-                email: form.querySelector('[name="email"]').value.trim(),
-                telefone: cleanPhone(form.querySelector('[name="whatsapp"]').value),
-                origem: 'inbound_landing',
-                intencao_detectada: intent === 'abrir' ? 'abrir_empresa' : 'trocar_contabilidade',
-                profissao: (form.querySelector('[name="segmento"]').value || '').trim(),
-                faturamento: (form.querySelector('[name="faturamento"]').value || '').trim()
-            };
-        }
-
-        async function handleSubmit(e) {
-            e.preventDefault();
-            const form = document.getElementById('modal-form');
-            const btn = document.getElementById('modal-submit-btn');
-            const errEl = document.getElementById('modal-form-error');
-            errEl.classList.add('hidden');
-            btn.disabled = true;
-            document.getElementById('btn-submit-text').textContent = 'Enviando...';
-
-            const payload = buildLeadPayload(form);
-
-            try {
-                const res = await fetch(LEAD_API, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                if (!res.ok) throw new Error('Erro ao enviar');
-                form.classList.add('hidden');
-                document.getElementById('modal-success').classList.remove('hidden');
-            } catch (err) {
-                errEl.textContent = 'Não foi possível enviar. Tente novamente.';
-                errEl.classList.remove('hidden');
-            } finally {
-                btn.disabled = false;
-                document.getElementById('btn-submit-text').textContent = form.querySelector('[name="intent"]').value === 'abrir' ? 'Quero abrir minha empresa' : 'Quero conhecer a Hórus';
-            }
-        }
-
-        // Fechar com ESC
+        // Fechar menu mobile com ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                closeModal();
                 closeMobileMenu();
             }
         });
-        // ===== FIM MODAL =====
 
         // ===== MOBILE MENU =====
         function toggleMobileMenu() {
